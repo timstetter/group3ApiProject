@@ -6,7 +6,9 @@ public class Event {
 	private String id;
 	private String url; // direct link to promoter for event
 	private String info;
-	private Start date;
+	private StartDates dates;
+	
+	
 	private Embedded _embedded;
 	
 	public String getName() {
@@ -33,23 +35,27 @@ public class Event {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	public Start getDate() {
-		return date;
-	}
-	public void setDate(Start date) {
-		this.date = date;
-	}
+	
+	
 	public Embedded get_embedded() {
 		return _embedded;
 	}
 	public void set_embedded(Embedded _embedded) {
 		this._embedded = _embedded;
 	}
+	public StartDates getDates() {
+		return dates;
+	}
+	public void setDates(StartDates dates) {
+		this.dates = dates;
+	}
 	@Override
 	public String toString() {
-		return "Event [name=" + name + ", id=" + id + ", url=" + url + ", info=" + info + ", date=" + date
+		return "Event [name=" + name + ", id=" + id + ", url=" + url + ", info=" + info + ", dates=" + dates
 				+ ", _embedded=" + _embedded + "]";
 	}
+
+	
 	
 	
 	
