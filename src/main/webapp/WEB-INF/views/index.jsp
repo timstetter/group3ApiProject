@@ -10,8 +10,12 @@
 </head>
 <body>
 	<h1>All Events</h1>
-	<c:forEach var="event" items="${ events }">
-		${event.name } <br />
+	<c:forEach var="event" items="${ eRep.get_embedded().getEvents() }">
+		${event.name }  <br />
 	</c:forEach>
+	<c:url value="/" var="nexturl">
+		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
+	</c:url>
+	<a href="${ nexturl }">Next Page</a>
 </body>
 </html>
