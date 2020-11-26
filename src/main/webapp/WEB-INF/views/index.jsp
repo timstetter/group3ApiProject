@@ -13,7 +13,7 @@
 	
 	<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
 		<b>Event Name:</b> 
-			${ event.getName() } 		
+			<a href="${ event.getUrl() }">${ event.getName() }</a> 		
 		<b>Event Date:</b> 
 		
 			<fmt:formatDate pattern ="MM/dd/yyyy" value ="${event.getDates().getStart().getLocalDate() }" />
