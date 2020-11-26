@@ -31,10 +31,7 @@ public class Link {
 	}
 	public void setLast(NavLink last) {
 		this.last = last;
-	}
-	
-	
-	
+	}	
 	public NavLink getPrev() {
 		return prev;
 	}

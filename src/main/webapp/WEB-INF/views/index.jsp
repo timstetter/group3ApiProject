@@ -10,12 +10,28 @@
 </head>
 <body>
 	<h1>All Events</h1>
-	<c:forEach var="event" items="${ eRep.get_embedded().getEvents() }">
-		${event.name }  <br />
+	
+	<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
+		<b>Event Name:</b> 
+			${ event.getName() } 		
+		<b>Event Date:</b> 
+		
+			<fmt:formatDate pattern ="MM/dd/yyyy" value ="${event.getDates().getStart().getLocalDate() }" />
+			
+		<b>Venue:</b> 
+		
+			<c:forEach var="venue" items="${ event.get_embedded().getVenues() }">
+				${ venue.getName() } 
+			</c:forEach>  
+			
+				<br />
 	</c:forEach>
+	
 	<c:url value="/" var="nexturl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
 	</c:url>
+	
 	<a href="${ nexturl }">Next Page</a>
+	
 </body>
 </html>

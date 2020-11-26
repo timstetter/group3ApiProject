@@ -1,16 +1,16 @@
 package co.grandcircus.group3apiproject.model;
 
-
+import java.sql.Date;
 
 public class Start {
 	
-	private String localDate;
+	private Date localDate;
 
-	public String getLocalDate() {
+	public Date getLocalDate() {
 		return localDate;
 	}
 
-	public void setLocalDate(String localDate) {
+	public void setLocalDate(Date localDate) {
 		this.localDate = localDate;
 	}
 

@@ -6,9 +6,7 @@ public class Event {
 	private String id;
 	private String url; // direct link to promoter for event
 	private String info;
-	private StartDates dates;
-	
-	
+	private StartDates dates;	
 	private Embedded _embedded;
 	
 	public String getName() {
