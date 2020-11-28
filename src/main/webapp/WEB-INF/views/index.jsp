@@ -33,6 +33,12 @@
 	
 	</table>
 	
+	<c:url value="/" var="prevurl">
+		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getPrev().getHref() }" />
+	</c:url>
+	<c:if test="${eRep.getPage().getNumber() > 0 }">
+		<a href="${ prevurl }">Previous Page</a>
+	</c:if>
 	<c:url value="/" var="nexturl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
 	</c:url>
