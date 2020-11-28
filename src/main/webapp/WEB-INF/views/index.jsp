@@ -10,22 +10,28 @@
 </head>
 <body>
 	<h1>All Events</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Date</th>
+			<th>Venue</th>
+		</tr>
+		
+		<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
+		 	<tr>
+				<td><a href="${ event.getUrl() }">${ event.getName() }</a></td>	
+		
+		
+				<td><fmt:formatDate pattern ="MM/dd/yyyy" value ="${ event.getDates().getStart().getLocalDate() }" /></td>
+			
+				<c:forEach var="venue" items="${ event.get_embedded().getVenues() }">
+					<td>${ venue.getName() }, ${ venue.getCity().getName() }, ${ venue.getState().getStateCode() }</td>
+				</c:forEach>  
+			
+			</tr>		
+		</c:forEach>
 	
-	<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
-		<b>Event Name:</b> 
-			<a href="${ event.getUrl() }">${ event.getName() }</a> 		
-		<b>Event Date:</b> 
-		
-			<fmt:formatDate pattern ="MM/dd/yyyy" value ="${event.getDates().getStart().getLocalDate() }" />
-			
-		<b>Venue:</b> 
-		
-			<c:forEach var="venue" items="${ event.get_embedded().getVenues() }">
-				${ venue.getName() } 
-			</c:forEach>  
-			
-				<br />
-	</c:forEach>
+	</table>
 	
 	<c:url value="/" var="nexturl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
