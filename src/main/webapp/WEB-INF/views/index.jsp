@@ -32,6 +32,12 @@
 		</c:forEach>
 	
 	</table>
+	<c:url value="/" var="firsturl">
+		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getFirst().getHref() }" />
+	</c:url>
+	<c:if test="${eRep.getPage().getNumber() > 1 }">
+		<a href="${ firsturl }">First Page</a>
+	</c:if>
 	
 	<c:url value="/" var="prevurl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getPrev().getHref() }" />
@@ -39,11 +45,20 @@
 	<c:if test="${eRep.getPage().getNumber() > 0 }">
 		<a href="${ prevurl }">Previous Page</a>
 	</c:if>
+	
 	<c:url value="/" var="nexturl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
-	</c:url>
-	
+	</c:url>	
 	<a href="${ nexturl }">Next Page</a>
+	
+<!--  For some reason this isn't working, getting results limit exceeded  	
+	<c:url value="/" var="lasturl">
+		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getLast().getHref() }" />
+	</c:url>	
+	<a href="${ lasturl }">Last Page</a>  
+-->	
+	<p>Page ${ eRep.getPage().getNumber() + 1 } of ${ eRep.getPage().getTotalPages() }</p>
+	<p>Total Results: ${ eRep.getPage().getTotalElements() }</p>
 	
 </body>
 </html>
