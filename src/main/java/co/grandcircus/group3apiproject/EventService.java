@@ -21,7 +21,18 @@ public class EventService {
 		url = url + "&apikey=" + apikey;
 		System.out.println(url);
 		EventResponse res = rt.getForObject(url, EventResponse.class);
-		System.out.println(res.get_embedded().getEvents().size());
+		
 		return res;
 	}
+	public String searchKeyword(String keyword) {
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=";
+		url = url + keyword + "&apikey=" + apikey;
+		System.out.println(url);
+		
+		
+		return url;
+	}
+	
+	
+	
 }

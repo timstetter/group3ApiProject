@@ -6,15 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="styles.css" rel="stylesheet"/>
+<script src="script.js"></script>
 <title>Group 3 API Project | Events</title>
 </head>
 <body>
-	<h1>All Events</h1>
-	<table>
+	<h1>Events</h1>
+	
+	<form method="post" action="/">
+		<input name="keyword" type="text" value="<c:out value="${ keyword }"/>" />
+		<button>Search by keyword</button>
+	</form>
+	
+	
+	
+	<table id="myTable">
 		<tr>
-			<th>Name</th>
-			<th>Date</th>
-			<th>Venue</th>
+			<th onclick="sortTable(0)">Name</th>
+			<th onclick="sortTable(1)">Date</th>
+			<th onclick="sortTable(2)">Venue</th>
 		</tr>
 		
 		<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
