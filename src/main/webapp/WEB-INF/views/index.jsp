@@ -19,32 +19,35 @@
 	</form>
 	
 	
-	
-	<table id="myTable">
-		<tr>
-			<th onclick="sortTable(0)">Name</th>
-			<th onclick="sortTable(1)">Date</th>
-			<th onclick="sortTable(2)">Venue</th>
-		</tr>
-		
-		<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
-		 	<tr>
-				<td><a href="${ event.getUrl() }">${ event.getName() }</a></td>	
-		
-		
-				<td><fmt:formatDate pattern ="MM/dd/yyyy" value ="${ event.getDates().getStart().getLocalDate() }" /></td>
+	<c:if test="${ eRep.getPage().getTotalElements() != 0 }">
+		<table id="myTable">
+			<tr>
+				<th onclick="sortTable(0)">Name</th>
+				<th onclick="sortTable(1)">Date</th>
+				<th onclick="sortTable(2)">Venue</th>
+			</tr>
 			
-				<c:forEach var="venue" items="${ event.get_embedded().getVenues() }">
-					<td>${ venue.getName() }, ${ venue.getCity().getName() }, ${ venue.getState().getStateCode() }</td>
-				</c:forEach>  
+			<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
+			 	<tr>
+					<td><a href="${ event.getUrl() }">${ event.getName() }</a></td>	
 			
-			</tr>		
-		</c:forEach>
+			
+					<td><fmt:formatDate pattern ="MM/dd/yyyy" value ="${ event.getDates().getStart().getLocalDate() }" /></td>
+				
+					<c:forEach var="venue" items="${ event.get_embedded().getVenues() }">
+						<td>${ venue.getName() }, ${ venue.getCity().getName() }, ${ venue.getState().getStateCode() }</td>
+					</c:forEach>  
+				
+				</tr>		
+			</c:forEach>
+		
+		</table>
+	</c:if>
 	
-	</table>
 	<c:url value="/" var="firsturl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getFirst().getHref() }" />
 	</c:url>
+	
 	<c:if test="${eRep.getPage().getNumber() > 1 }">
 		<a href="${ firsturl }">First Page</a>
 	</c:if>
@@ -52,14 +55,17 @@
 	<c:url value="/" var="prevurl">
 		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getPrev().getHref() }" />
 	</c:url>
+	
 	<c:if test="${eRep.getPage().getNumber() > 0 }">
 		<a href="${ prevurl }">Previous Page</a>
 	</c:if>
 	
-	<c:url value="/" var="nexturl">
-		<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
-	</c:url>	
-	<a href="${ nexturl }">Next Page</a>
+	<c:if test="${ eRep.getPage().getTotalElements() != 0 }">
+		<c:url value="/" var="nexturl">
+			<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
+		</c:url>	
+		<a href="${ nexturl }">Next Page</a>
+	</c:if>
 	
 <!--  For some reason this isn't working, getting results limit exceeded  	
 	<c:url value="/" var="lasturl">
@@ -67,7 +73,9 @@
 	</c:url>	
 	<a href="${ lasturl }">Last Page</a>  
 -->	
-	<p>Page ${ eRep.getPage().getNumber() + 1 } of ${ eRep.getPage().getTotalPages() }</p>
+	<c:if test="${ eRep.getPage().getTotalElements() != 0 }">
+		<p>Page ${ eRep.getPage().getNumber() + 1 } of ${ eRep.getPage().getTotalPages() }</p>
+	</c:if>
 	<p>Total Results: ${ eRep.getPage().getTotalElements() }</p>
 	
 </body>
