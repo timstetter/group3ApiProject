@@ -1,6 +1,6 @@
 package co.grandcircus.group3apiproject;
 
-
+import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,24 +15,24 @@ public class EventService {
 	@Value("${apikey}")
 	String apikey;
 
-	private RestTemplate rt = new RestTemplate();
-
+	private RestTemplate rt = new RestTemplate();    
+	
 	public EventResponse getEventResponse(String url) {
 		url = url + "&apikey=" + apikey;
-		System.out.println(url);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		System.out.println(timestamp + "|" + url);
 		EventResponse res = rt.getForObject(url, EventResponse.class);
 		
 		return res;
 	}
+	
 	public String searchKeyword(String keyword) {
 		String url = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=";
-		url = url + keyword + "&apikey=" + apikey;
-		System.out.println(url);
+		url = url + keyword;
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		System.out.println(timestamp + "|" + url);
 		
 		
 		return url;
-	}
-	
-	
-	
+	}	
 }
