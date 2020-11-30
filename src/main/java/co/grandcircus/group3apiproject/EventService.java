@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-
+import co.grandcircus.group3apiproject.model.Event;
 import co.grandcircus.group3apiproject.model.EventResponse;
 
 @Service
@@ -35,4 +35,14 @@ public class EventService {
 		
 		return url;
 	}	
+
+	public Event getEventById(String id) {
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?id=";
+		url = url + id + "&apikey=" + apikey;
+		return rt.getForObject(url, Event.class, id);
+		
+		
+	}
+
+
 }

@@ -1,26 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<head>
 		<meta charset="UTF-8">
 		<link href="styles.css" rel="stylesheet"/>
 		<script src="script.js"></script>
 		<title>Group 3 API Project | Events</title>
 	</head>
 	<body>
-		<h1>Events</h1>
-		
-		<a href="/bucketlist">Go to Bucket List</a><br /><br />
-		
-		
-		<form method="post" action="/">
-			<input name="keyword" type="text" value="<c:out value="${ keyword }"/>" />
-			<button>Search</button>
-		</form>
-		
+		<h1>Bucket List</h1>
 		
 		<c:if test="${ eRep.getPage().getTotalElements() != 0 }">
 			<table id="myTable">
@@ -28,7 +20,7 @@
 					<th onclick="sortTable(0)">Name</th>
 					<th onclick="sortTable(1)">Date</th>
 					<th onclick="sortTable(2)">Venue</th>
-					<th>Add to Bucket List</th>
+					<th>Remove from Bucket List</th>
 				</tr>
 				
 				<c:forEach var="event" items="${ eRep.get_embedded().getEvents()  }">
@@ -40,7 +32,7 @@
 					
 					<c:forEach var="venue" items="${ event.get_embedded().getVenues() }">
 					
-						<td>${ venue.getName() }</td>
+						<td>${ venue.getName() }, ${ venue.getCity().getName() }, ${ venue.getState().getStateCode() }</td>
 						
 					</c:forEach>  
 					<td><a href="/add/${ event.getId() }">Add to Bucket List</a></td>	

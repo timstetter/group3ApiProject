@@ -1,7 +1,6 @@
 package co.grandcircus.group3apiproject.model;
 
 
-
 public class EventResponse {
 
 	private EmbeddedResponse _embedded;

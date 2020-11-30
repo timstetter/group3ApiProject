@@ -4,14 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import co.grandcircus.group3apiproject.model.Event;
+import co.grandcircus.group3apiproject.model.EventResponse;
+
+
 
 @Controller
 public class EventController {
 
 	@Autowired
 	private EventService eventService;
+	
+	@Autowired
+	private EventRepository rep;
 
 	@GetMapping("/")
 	public String index(
@@ -31,4 +40,22 @@ public class EventController {
 		return "index";
 
 	}
+	
+	@GetMapping("/add/{id}")
+	public String add(@PathVariable("id") String id) {
+		Event event = eventService.getEventById(id);
+		event.setId(id);
+		rep.save(event);
+		return "redirect:/";
+		
+	}
+	
+	
 }
+
+
+
+
+
+
+
