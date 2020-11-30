@@ -51,7 +51,7 @@
 		</c:url>
 		
 		<c:if test="${eRep.getPage().getNumber() > 1 }">
-			<a href="${ firsturl }">First Page</a>
+			<a href="${ firsturl }">First Page</a>&nbsp;
 		</c:if>
 		
 		<c:url value="/" var="prevurl">
@@ -59,14 +59,14 @@
 		</c:url>
 		
 		<c:if test="${eRep.getPage().getNumber() > 0 }">
-			<a href="${ prevurl }">Previous Page</a>
+			<a href="${ prevurl }">Previous Page</a>&nbsp;
 		</c:if>
 		
 		<c:if test="${ eRep.getPage().getTotalElements() != 0 }">
 			<c:url value="/" var="nexturl">
 				<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
 			</c:url>	
-			<a href="${ nexturl }">Next Page</a>
+			<a href="${ nexturl }">Next Page</a>&nbsp;
 		</c:if>
 		
 	<!--  For some reason this isn't working, getting results limit exceeded  	
