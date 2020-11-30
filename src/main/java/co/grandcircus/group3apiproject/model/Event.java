@@ -1,6 +1,7 @@
 package co.grandcircus.group3apiproject.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Event {
 	private String info;
 	@Transient
 	private StartDates dates;	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Embedded _embedded;
 	
 	public Event() {

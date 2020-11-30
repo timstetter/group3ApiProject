@@ -39,7 +39,8 @@ public class EventService {
 	public Event getEventById(String id) {
 		String url = "https://app.ticketmaster.com/discovery/v2/events.json?id=";
 		url = url + id + "&apikey=" + apikey;
-		return rt.getForObject(url, Event.class, id);
+		System.out.println(url);
+		return rt.getForObject(url, EventResponse.class).get_embedded().getEvents().get(0);
 		
 		
 	}

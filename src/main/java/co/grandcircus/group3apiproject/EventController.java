@@ -45,6 +45,8 @@ public class EventController {
 	public String add(@PathVariable("id") String id) {
 		Event event = eventService.getEventById(id);
 		event.setId(id);
+		System.out.println(event.getName());
+		System.out.println(event);
 		rep.save(event);
 		return "redirect:/";
 		
