@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.group3apiproject.model.Event;
-import co.grandcircus.group3apiproject.model.EventResponse;
 
 
 
