@@ -70,7 +70,7 @@
 			<a href="${ prevurl }">Previous Page</a>&nbsp;
 		</c:if>
 		
-		<c:if test="${ eRep.getPage().getTotalElements() != 0 || eRep.getPage().getNumber() == 1}">
+		<c:if test="${ eRep.getPage().getTotalElements() != 0 }">
 			<c:url value="/" var="nexturl">
 				<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
 			</c:url>	
