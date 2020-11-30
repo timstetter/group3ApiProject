@@ -2,6 +2,7 @@ package co.grandcircus.group3apiproject.model;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Event {
 	@Id
 	private String id;
 	private String url; // direct link to promoter for event
+	@Column(length=10000)
 	private String info;
 	@Transient
 	private StartDates dates;	

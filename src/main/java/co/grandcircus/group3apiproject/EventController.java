@@ -1,5 +1,7 @@
 package co.grandcircus.group3apiproject;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,12 +46,31 @@ public class EventController {
 	@GetMapping("/add/{id}")
 	public String add(@PathVariable("id") String id) {
 		Event event = eventService.getEventById(id);
-		event.setId(id);
 		System.out.println(event.getName());
 		System.out.println(event);
 		rep.save(event);
 		return "redirect:/";
 		
+	}
+	
+	@GetMapping("/bucketlist")
+		public String bucketlist(Model model) {
+		List <Event> events = rep.findAll();
+		model.addAttribute("events", events);
+		return "bucketlist";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") String id) {
+		rep.deleteById(id);
+		return "redirect:/bucketlist";
+	}
+	
+	@GetMapping("/info/{id}")
+	public String info(@PathVariable("id") String id, Model model) {
+		Event event = eventService.getEventById(id);
+		model.addAttribute("event", event);		
+		return "info";
 	}
 	
 	

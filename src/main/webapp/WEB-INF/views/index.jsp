@@ -28,6 +28,7 @@
 					<th onclick="sortTable(0)">Name</th>
 					<th onclick="sortTable(1)">Date</th>
 					<th onclick="sortTable(2)">Venue</th>
+					<th>Info</th>
 					<th>Add to Bucket List</th>
 				</tr>
 				
@@ -42,8 +43,10 @@
 					
 						<td>${ venue.getName() }</td>
 						
-					</c:forEach>  
+					</c:forEach> 
+					<td><a href="/info/${ event.getId() }">Info</a></td> 
 					<td><a href="/add/${ event.getId() }">Add to Bucket List</a></td>	
+					
 					</tr>		
 				</c:forEach>
 			
