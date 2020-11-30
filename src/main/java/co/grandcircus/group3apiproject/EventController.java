@@ -35,10 +35,10 @@ public class EventController {
 	}
 
 	@PostMapping("/")
-	public String results(@RequestParam String keyword, Model model) {
+	public String results(@RequestParam String keyword, @RequestParam String postalCode, Model model) {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("eRep", eventService.getEventResponse(eventService.searchKeyword(keyword)));
-
+		model.addAttribute("eRep", eventService.getEventResponse(eventService.searchPostalCode(postalCode)));
 		return "index";
 
 	}

@@ -17,7 +17,8 @@
 		
 		
 		<form method="post" action="/">
-			<input name="keyword" type="text" value="<c:out value="${ keyword }"/>" />
+			<input name="keyword" placeholder="text search" type="text" value="<c:out value="${ keyword }"/>" />
+			<input name="postalCode" placeholder="postal code search" type="text" value="<c:out value="${ postalCode }"/>" />
 			<button>Search</button>
 		</form>
 		

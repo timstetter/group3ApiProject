@@ -31,8 +31,14 @@ public class EventService {
 		url = url + keyword;
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		System.out.println(timestamp + "|" + url);
-		
-		
+		return url;
+	}	
+	
+	public String searchPostalCode(String postalCode) {
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?postalCode=";
+		url = url + postalCode;
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		System.out.println(timestamp + "|" + url);
 		return url;
 	}	
 
