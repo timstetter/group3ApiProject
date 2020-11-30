@@ -71,6 +71,7 @@
 		</c:if>
 		
 		<c:if test="${ eRep.getPage().getTotalElements() > 20}">
+
 			<c:url value="/" var="nexturl">
 				<c:param name="url" value="https://app.ticketmaster.com${eRep.get_links().getNext().getHref() }" />
 			</c:url>	
